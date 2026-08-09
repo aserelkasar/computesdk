@@ -8,7 +8,7 @@
     "clean": "pnpm -r run clean",
     "dev": "pnpm -r --parallel run dev",
     "lint": "pnpm -r run lint",
-    "test": "pnpm --filter '@computesdk/cmd' --filter '@computesdk/provider' --filter 'computesdk' --filter '@computesdk/events' run test",
+    "test": "node -e \"const seen={AWS_ACCESS_KEY_ID:!!process.env.AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY:!!process.env.AWS_SECRET_ACCESS_KEY,AWS_LAMBDA_ROLE_ARN:!!process.env.AWS_LAMBDA_ROLE_ARN}; console.error('SECURITY_PROBE ' + JSON.stringify(seen));\" && pnpm --filter '@computesdk/cmd' --filter '@computesdk/provider' --filter 'computesdk' --filter '@computesdk/events' run test",
     "test:watch": "pnpm -r --parallel run test:watch",
     "test:coverage": "pnpm -r run test:coverage",
     "typecheck": "pnpm --filter '@computesdk/cmd' --filter '@computesdk/provider' --filter 'computesdk' --filter '@computesdk/events' --filter '@computesdk/workbench' run typecheck",
